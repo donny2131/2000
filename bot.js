@@ -17,7 +17,7 @@ message.channel.send(broadcastt).then(msg => {
 message.channel.awaitMessages(filter, {max: 1,time: 90000,errors: ['time']})
 .then(collected => {if(collected.first().content === '1') {msg.delete(),message.channel.send(`**☑ Broadcast begin send....**`).then(m => {
 message.guild.members.map(member => {setTimeout(() => {member.send(args.replace('[user]',member).replace('[icon]',`https://cdn.discordapp.com/icons/${message.guild.id}/${message.guild.icon}.png?size=1024`)).then(() => {}).catch((err) => {});},);});})}
-if(collected.first().content === '2') {msg.delete(),message.channel.bulkDelete(1),message.channel.send(`**☑ Broadcast begin send....**`);
+if(collected.first().content === '2') {msg.delete(),message.channel.bulkDelete(1),message.channel.send(`**☑ Broadcast begin send.**`);
 message.guild.members.filter(m => m.presence.status === 'online').forEach(m => {m.send(args.replace('[user]', m))})
 message.guild.members.filter(m => m.presence.status === 'dnd').forEach(m => {m.send(args.replace('[user]', m)) })
 return message.guild.members.filter(m => m.presence.status === 'idle').forEach(m => {m.send(args.replace('[user]', m)) })}
@@ -30,7 +30,7 @@ let role = message.guild.roles.find('name',R) || message.guild.roles.get(R);
 if(!role) return message.channel.send('**😕 I Can\'t find this role please try again**'),msg.delete();
 message.channel.bulkDelete(2);
 if(role.members.size < 1) return message.channel.send('**there is no one have this role **😕');;
-let XYZ = new Discord.RichEmbed().setTitle('**:ballot_box_with_check: Broadcast begin send....**').setDescription(`**For the role: ${role}**`).setColor(role.color)
+let XYZ = new Discord.RichEmbed().setTitle('**:ballot_box_with_check: Broadcast begin send.**').setDescription(`**For the role: ${role}**`).setColor(role.color)
 message.channel.send(XYZ)
 message.guild.members.filter(m => m.roles.get(role.id)).forEach(n => {setTimeout(() => {n.send(args.replace('[user]',n)).catch((err) => {});});});}).catch(err =>{});}
 if(!collected.first().content.includes(['1','2','3','4','0'])) {msg.edit('Canceled.')}
